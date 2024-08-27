@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="./resources/styles/pages/index.css">
     <link rel="stylesheet" href="style.css">
 
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.stg.mcweb.micoworks-system.jp/ev/access/mNtkeI8MQICLfXtvveh8Mg/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
+    </script>
+
+
+
     <!--OGP設定-->
     <meta property="og:title" content="タイトル">
     <meta property="og:description" content="ディスクリプション">
@@ -38,7 +43,16 @@
 
     <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=DBxmT-AgQoOhfmq_uI417A&type=channel" class="btn">
         カスタム流入経路：LINEで開く</a>
-    
+    <button type="button" id="btn">イベント「注文」</button>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', function() {
+            mc_tracker('event', '注文', {
+                '商品名': '商品A',
+                '価格': 1000
+            });
+        });
+    </script>
 
 </body>
 </html>
