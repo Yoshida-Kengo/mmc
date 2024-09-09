@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="ディスクリプション">
+    <title>ページタイトル</title>
+    <!--ページCSSの読み込み-->
+    <link rel="stylesheet" href="./resources/styles/pages/index.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.console.mico-cloud.jp/ev/access/EW7lCd_VRCio8G1SlTLLRw/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
+    </script>
+
+
+
+
+    <!--OGP設定-->
+    <meta property="og:title" content="タイトル">
+    <meta property="og:description" content="ディスクリプション">
+    <meta property="og:image" content="画像URL">
+    <meta property="og:image:secure_url" content="画像URL">
+    <meta property="og:url" content="サイトURL">
+    <meta property="og:site_name" content="サイト名">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:title" content="タイトル">
+    <meta name="twitter:description" content="ディスクリプション">
+    <meta name="twitter:image" content="画像URL">
+    <meta name="twitter:card" content="summary">
+    <!--favicon設定-->
+    <link rel="icon" href="/favicon.ico"><!-- 32×32 -->
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <!-- モバイルChromeのヘッダー色などで使われるテーマカラー   -->
+    <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+    <div>
+        <div class="content">
+            <h3>サイト：OverHaul動作テスト(14)</h3>
+        </div>
+        <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=Tuyoo3UfTnCGM8GphAV7rg&type=channel" class="btn">
+                基本流入経路：LINEで開く</a>
+        </div>  
+        <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=DBxmT-AgQoOhfmq_uI417A&type=channel" class="btn">
+                カスタム流入経路：LINEで開く</a>
+        </div>
+        <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=9DhBX5QiSfy0Yop4RMmDqQ&type=channel" class="btn">
+                カスタム流入経路（複製）：LINEで開く</a>
+        </div>
+        <div class="content">
+            <button type="button" id="btn">イベント「注文」</button>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('btn').addEventListener('click', function() {
+            mc_tracker('EVENT', 'order', {});
+            alert('イベント「注文」を送信しました');
+        });
+    </script>
+
+</body>
+</html>
