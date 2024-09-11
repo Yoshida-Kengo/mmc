@@ -121,12 +121,20 @@
             for(var i=0;i<eventParam.length;i++) {
                 document.write('<div class="card">');
                 document.write('<h5>イベント' + eventParam[i].eventName + '</h5>');
-                // document.write(eventParam[i].eventName);
                 document.write('<button id="eventBtn" class="card-button" value="' + eventParam[i].eventValue + '">ボタン</button>');
-                // document.write('<button id="eventBtn" value="' + eventParam[i].eventValue + '">' + eventparam[i].eventName + '</button>');
                 document.write('</div>');
             }
         </script>
+    </div>
+
+    <div>
+        <div class="content">
+            <h3>
+                前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
+                説明：下記の更新するカスタマー属性名を選択し、送信を押下することでカスタマー更新されます。</h3>
+        </div>
+
+        <button id="myButton">送信</button>
 
     </div>
 
@@ -137,9 +145,27 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
+            // mc_tracker('EVENT' , button.value,{});
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            window.location.href = newUrl;
             alert('イベント「' + button.value + '」を送信しました');
         }
         });
+
+        document.getElementById("myButton").addEventListener("click", function() {
+        // クエリパラメータを設定
+        const params = new URLSearchParams({
+            param1: "value1",
+            param2: "value2"
+        });
+
+        // 新しいURLを作成
+        const newUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+
+        // 新しいURLにリダイレクト
+        window.location.href = newUrl;
+    });
+
     </script>
 
 </body>
