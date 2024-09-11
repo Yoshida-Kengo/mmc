@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../home_style.css">
 
-    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.overhaul.mcweb.micoworks-system.jp/ev/access/coxCW4ESR66u1BLhMX4vwA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.overhaul.mcweb.micoworks-system.jp/ev/access/tG_77d_hSZa7YdFkOqJ1kA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
     </script>
 
 </head>
 <body>
     <div>
         <div class="content">
-            <h3>サイト：OverHaul動作テスト(14)</h3>
+            <h3>サイト：WEBタグ・イベントの動作チェック_STG</h3>
         </div>
         <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
         <div class="content">
@@ -121,20 +121,12 @@
             for(var i=0;i<eventParam.length;i++) {
                 document.write('<div class="card">');
                 document.write('<h5>イベント' + eventParam[i].eventName + '</h5>');
+                // document.write(eventParam[i].eventName);
                 document.write('<button id="eventBtn" class="card-button" value="' + eventParam[i].eventValue + '">ボタン</button>');
+                // document.write('<button id="eventBtn" value="' + eventParam[i].eventValue + '">' + eventparam[i].eventName + '</button>');
                 document.write('</div>');
             }
         </script>
-    </div>
-
-    <div>
-        <div class="content">
-            <h3>
-                前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
-                説明：下記の更新するカスタマー属性名を選択し、送信を押下することでカスタマー更新されます。</h3>
-        </div>
-
-        <button id="myButton">送信</button>
 
     </div>
 
@@ -145,9 +137,27 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
-            alert('イベント「' + button.value + '」を送信しました');
+            getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            // mc_tracker('EVENT' , button.value,{});
+            // alert('イベント「' + button.value + '」を送信しました');
         }
         });
+
+        function getCookies() {
+            const cookies = document.cookie;
+            const cookieArray = cookies.split(';');
+            console.log(cookieArray);
+
+            const cookieObject = {};
+            cookieArray.forEach(cookie => {
+            const [name, value] = cookie.split('=');
+            cookieObject[name] = value;
+        });
+        console.log(cookieObject);
+        }
     </script>
 
 </body>
