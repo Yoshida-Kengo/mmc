@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../home_style.css">
 
-    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.overhaul.mcweb.micoworks-system.jp/ev/access/tG_77d_hSZa7YdFkOqJ1kA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.stg.mcweb.micoworks-system.jp/ev/access/oMewo13KTtCaN39PPMkckA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
     </script>
 
 </head>
@@ -206,12 +206,12 @@
                         event.preventDefault(); // フォームの送信を防ぐ
                         var inputId = this.getAttribute("data-input");
                         var attributeKey = this.getAttribute("data-attribute");
-                        console.log(attributeKey);
-                        console.log(inputId);
+                        console.log('"' + attributeKey + '"');
+                        console.log('"' + inputId + '"');
                         var inputValue = document.getElementById(inputId).value; // 入力値を取得
                         document.getElementById("output").textContent = inputValue; // 取得した値を表示
                         mc_tracker('SET_ATTRIBUTES', {
-                            attributeKey: inputValue
+                            attributeKey: '"' + inputValue + '"'
                         });
                         alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
