@@ -20,6 +20,8 @@
             <h3>サイト：WEBタグ・イベントの動作チェック_STG</h3>
         </div>
         <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
+        <button id="clearCacheBtn">キャッシュをクリア</button>
+
         <div class="content">
             <h3>
                 前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
@@ -213,6 +215,20 @@
                         });
                     });
                 });
+
+
+                document.getElementById('clearCacheBtn').addEventListener('click', function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) {
+                        caches.delete(name);
+                    }
+                });
+                alert('キャッシュがクリアされました！');
+            } else {
+                alert('キャッシュAPIがサポートされていません。');
+            }
+        });
     </script>
 
 </body>
