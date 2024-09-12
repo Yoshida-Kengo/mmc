@@ -211,7 +211,7 @@
                         var inputValue = document.getElementById(inputId).value; // 入力値を取得
                         document.getElementById("output").textContent = inputValue; // 取得した値を表示
                         mc_tracker('SET_ATTRIBUTES', {
-                            attributeKey: '"' + inputValue + '"'
+                            [attributeKey] : '"' + inputValue + '"'
                         });
                         mc_tracker('SET_ATTRIBUTES', {
                             "name": "テスト"
