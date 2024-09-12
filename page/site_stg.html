@@ -140,7 +140,7 @@
     <form>
         <script>
             let attributeParam = [{
-                attributeKey : "string",
+                attributeKey : "customer_no",
                 attributeName : "文字列",
                 attributeBasic : "基本属性"
             },{
@@ -213,6 +213,7 @@
                         mc_tracker('SET_ATTRIBUTES', {
                             attributeKey: inputValue
                         });
+                        alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
                 });
 
