@@ -130,6 +130,45 @@
 
     </div>
 
+    <div class="content">
+        <h3>
+            前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
+            説明：下記の項目を入力後、押下することでカスタマー更新をします。</h3>
+    </div>
+    <form>
+        <script>
+            let attributeParam = [{
+                attributeKey : "string",
+                attributeName : "文字列",
+                attributeBasic : "基本属性"
+            },{
+                attributeKey : "type",
+                attributeName : "タイプ",
+                attributeBasic : "基本属性"
+            },{
+                attributeKey : "text",
+                attributeName : "テキスト",
+                attributeBasic : "基本属性"
+            },{
+                attributeKey : "flag",
+                attributeName : "フラグ",
+                attributeBasic : "基本属性"
+            }, {
+                attributeKey : "number",
+                attributeName : "数値",
+                attributeBasic : "基本属性"
+            }];
+
+            for(var i=0;i<attributeParam.length;i++) {
+                document.write('<div class="input-container">');
+                document.write('<label for="inputField">型「' + attributeParam[i].attributeName + '」の入力: </label>');
+                document.write('<input type="text" id="inputField' + (i+1) + '" >');
+                document.write('<button class="submitButton" data-input="inputField' + (i+1) +'" data-attribute=' +attributeParam[i].attributeKey + ' >カスタマー更新する</button>');
+                document.write('</div>');
+            }
+        </script>
+    </form>
+    <p>取得した値: <span id="output"></span></p>
 
 
     <script>
@@ -137,7 +176,7 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
-            getCookies();
+            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
@@ -158,6 +197,22 @@
         });
         console.log(cookieObject);
         }
+
+
+        document.querySelectorAll(".submitButton").forEach(button => {
+                    button.addEventListener("click", function(event) {
+                        event.preventDefault(); // フォームの送信を防ぐ
+                        var inputId = this.getAttribute("data-input");
+                        var attributeKey = this.getAttribute("data-attribute");
+                        console.log(attributeKey);
+                        console.log(inputId);
+                        var inputValue = document.getElementById(inputId).value; // 入力値を取得
+                        document.getElementById("output").textContent = inputValue; // 取得した値を表示
+                        mc_tracker('SET_ATTRIBUTES', {
+                            attributeKey: inputValue
+                        });
+                    });
+                });
     </script>
 
 </body>
