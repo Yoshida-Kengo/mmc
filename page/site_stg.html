@@ -213,6 +213,9 @@
                         mc_tracker('SET_ATTRIBUTES', {
                             attributeKey: '"' + inputValue + '"'
                         });
+                        mc_tracker('SET_ATTRIBUTES', {
+                            "name": "テスト"
+                        });
                         alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
                 });
