@@ -214,8 +214,8 @@
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
-            // mc_tracker('EVENT' , button.value,{});
-            // alert('イベント「' + button.value + '」を送信しました');
+            mc_tracker('EVENT' , button.value,{});
+            alert('イベント「' + button.value + '」を送信しました');
         }
         });
 
