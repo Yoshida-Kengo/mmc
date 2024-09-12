@@ -140,31 +140,63 @@
     <form>
         <script>
             let attributeParam = [{
-                attributeKey : "customer_no",
-                attributeName : "文字列",
-                attributeBasic : "基本属性"
+                attributeKey : "name",
+                attributeName : "「文字列」の「名前」",
             },{
-                attributeKey : "type",
-                attributeName : "タイプ",
-                attributeBasic : "基本属性"
+                attributeKey : "member_flag",
+                attributeName : "「フラグ」の「会員・入会フラグ」",
             },{
-                attributeKey : "text",
-                attributeName : "テキスト",
-                attributeBasic : "基本属性"
+                attributeKey : "email",
+                attributeName : "「メールアドレス（文字列）」の「メールアドレス」",
             },{
-                attributeKey : "flag",
-                attributeName : "フラグ",
-                attributeBasic : "基本属性"
+                attributeKey : "phone",
+                attributeName : "「電話番号（文字列）」の「電話番号」",
             }, {
-                attributeKey : "number",
-                attributeName : "数値",
-                attributeBasic : "基本属性"
-            }];
+                attributeKey : "zip_code",
+                attributeName : "「郵便番号（文字列）」の「郵便番号」",
+            },{
+                attributeKey : "gender",
+                attributeName : "「タイプ」の「性別」",
+            }, {
+                attributeKey : "birthdate",
+                attributeName : "「日付」の「生年月日」",
+            }, {
+                attributeKey : "memo",
+                attributeName : "「テキスト」の「メモ」",
+            },{
+                attributeKey: "middle_name",
+                attributeName: "「文字列」の「ミドルネーム」"
+            },{
+                attributeKey: "age",
+                attributeName: "「数値」の「年齢」"
+            },{
+                attributeKey: "vacation",
+                attributeName: "「日付」の「休み」"
+            },{
+                attributeKey: "contract",
+                attributeName: "「日時」の「予約日時」"
+            },{
+                attributeKey: "hobby",
+                attributeName: "「タイプ」の「趣味」"
+            },{
+                attributeKey: "note",
+                attributeName: "「テキスト」の「記事」"
+            },{
+                attributeKey: "adult",
+                attributeName: "「フラグ」の「成人」"
+            },{
+                attributeKey: "favorite",
+                attributeName: "「複数選択」の「お気に入り」"
+            },{
+                attributeKey: "agreement",
+                attributeName: "「同意事項」の「同意事項」"
+            }
+            ];
 
             for(var i=0;i<attributeParam.length;i++) {
                 document.write('<div class="input-container">');
-                document.write('<label for="inputField">型「' + attributeParam[i].attributeName + '」の入力: </label>');
-                document.write('<input type="text" id="inputField' + (i+1) + '" >');
+                document.write('<label for="inputField">型' + attributeParam[i].attributeName + 'の入力: </label>');
+                document.write('<textarea type="text" id="inputField' + (i+1) + '" ></textarea>');
                 document.write('<button class="submitButton" data-input="inputField' + (i+1) +'" data-attribute=' +attributeParam[i].attributeKey + ' >カスタマー更新する</button>');
                 document.write('</div>');
             }
@@ -206,15 +238,10 @@
                         event.preventDefault(); // フォームの送信を防ぐ
                         var inputId = this.getAttribute("data-input");
                         var attributeKey = this.getAttribute("data-attribute");
-                        console.log('"' + attributeKey + '"');
-                        console.log('"' + inputId + '"');
                         var inputValue = document.getElementById(inputId).value; // 入力値を取得
                         document.getElementById("output").textContent = inputValue; // 取得した値を表示
                         mc_tracker('SET_ATTRIBUTES', {
-                            [attributeKey] : '"' + inputValue + '"'
-                        });
-                        mc_tracker('SET_ATTRIBUTES', {
-                            "name": "テスト"
+                            [attributeKey] : inputValue
                         });
                         alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
