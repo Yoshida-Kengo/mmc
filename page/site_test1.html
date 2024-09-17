@@ -17,7 +17,7 @@
 <body>
     <div>
         <div class="content">
-            <h3>サイト：WEBタグ・イベントの動作チェック_STG</h3>
+            <h3>サイト：OverHaul動作テスト(1)</h3>
         </div>
         <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
         <button id="clearCacheBtn">キャッシュをクリア</button>
@@ -215,7 +215,7 @@
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
             mc_tracker('EVENT' , button.value,{});
-            alert('イベント「' + button.value + '」を送信しました');
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」イベント「' + button.value + '」を送信しました');
         }
         });
 
@@ -262,6 +262,19 @@
         });
     </script>
 
+
+    <script>
+        function getCookieValue(name) {
+    let cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        let [key, value] = cookie.trim().split('=');
+        if (key === name) {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
+}
+    </script>
 </body>
 
 </html>
