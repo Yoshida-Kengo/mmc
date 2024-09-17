@@ -215,7 +215,7 @@
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
             mc_tracker('EVENT' , button.value,{});
-            alert('イベント「' + button.value + '」を送信しました');
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
         }
         });
 
@@ -261,6 +261,19 @@
             }
         });
     </script>
+
+<script>
+    function getCookieValue(name) {
+let cookies = document.cookie.split(';');
+for (let cookie of cookies) {
+    let [key, value] = cookie.trim().split('=');
+    if (key === name) {
+        return decodeURIComponent(value);
+    }
+}
+return null;
+}
+</script>
 
 </body>
 
