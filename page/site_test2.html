@@ -17,9 +17,11 @@
 <body>
     <div>
         <div class="content">
-            <h3>サイト：OverHaul動作テスト(2)</h3>
+            <h3>サイト：WEBタグ・イベントの動作チェック_STG</h3>
         </div>
         <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
+        <button id="clearCacheBtn">キャッシュをクリア</button>
+
         <div class="content">
             <h3>
                 前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
@@ -130,6 +132,77 @@
 
     </div>
 
+    <div class="content">
+        <h3>
+            前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
+            説明：下記の項目を入力後、押下することでカスタマー更新をします。</h3>
+    </div>
+    <form>
+        <script>
+            let attributeParam = [{
+                attributeKey : "name",
+                attributeName : "「文字列」の「名前」",
+            },{
+                attributeKey : "member_flag",
+                attributeName : "「フラグ」の「会員・入会フラグ」",
+            },{
+                attributeKey : "email",
+                attributeName : "「メールアドレス（文字列）」の「メールアドレス」",
+            },{
+                attributeKey : "phone",
+                attributeName : "「電話番号（文字列）」の「電話番号」",
+            }, {
+                attributeKey : "zip_code",
+                attributeName : "「郵便番号（文字列）」の「郵便番号」",
+            },{
+                attributeKey : "gender",
+                attributeName : "「タイプ」の「性別」",
+            }, {
+                attributeKey : "birthdate",
+                attributeName : "「日付」の「生年月日」",
+            }, {
+                attributeKey : "memo",
+                attributeName : "「テキスト」の「メモ」",
+            },{
+                attributeKey: "middle_name",
+                attributeName: "「文字列」の「ミドルネーム」"
+            },{
+                attributeKey: "age",
+                attributeName: "「数値」の「年齢」"
+            },{
+                attributeKey: "vacation",
+                attributeName: "「日付」の「休み」"
+            },{
+                attributeKey: "contract",
+                attributeName: "「日時」の「予約日時」"
+            },{
+                attributeKey: "hobby",
+                attributeName: "「タイプ」の「趣味」"
+            },{
+                attributeKey: "note",
+                attributeName: "「テキスト」の「記事」"
+            },{
+                attributeKey: "adult",
+                attributeName: "「フラグ」の「成人」"
+            },{
+                attributeKey: "favorite",
+                attributeName: "「複数選択」の「お気に入り」"
+            },{
+                attributeKey: "agreement",
+                attributeName: "「同意事項」の「同意事項」"
+            }
+            ];
+
+            for(var i=0;i<attributeParam.length;i++) {
+                document.write('<div class="input-container">');
+                document.write('<label for="inputField">型' + attributeParam[i].attributeName + 'の入力: </label>');
+                document.write('<textarea type="text" id="inputField' + (i+1) + '" ></textarea>');
+                document.write('<button class="submitButton" data-input="inputField' + (i+1) +'" data-attribute=' +attributeParam[i].attributeKey + ' >カスタマー更新する</button>');
+                document.write('</div>');
+            }
+        </script>
+    </form>
+    <p>取得した値: <span id="output"></span></p>
 
 
     <script>
@@ -137,8 +210,55 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , button.value,{});
             alert('イベント「' + button.value + '」を送信しました');
         }
+        });
+
+        function getCookies() {
+            const cookies = document.cookie;
+            const cookieArray = cookies.split(';');
+            console.log(cookieArray);
+
+            const cookieObject = {};
+            cookieArray.forEach(cookie => {
+            const [name, value] = cookie.split('=');
+            cookieObject[name] = value;
+        });
+        console.log(cookieObject);
+        }
+
+
+        document.querySelectorAll(".submitButton").forEach(button => {
+                    button.addEventListener("click", function(event) {
+                        event.preventDefault(); // フォームの送信を防ぐ
+                        var inputId = this.getAttribute("data-input");
+                        var attributeKey = this.getAttribute("data-attribute");
+                        var inputValue = document.getElementById(inputId).value; // 入力値を取得
+                        document.getElementById("output").textContent = inputValue; // 取得した値を表示
+                        mc_tracker('SET_ATTRIBUTES', {
+                            [attributeKey] : inputValue
+                        });
+                        alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+                    });
+                });
+
+
+                document.getElementById('clearCacheBtn').addEventListener('click', function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) {
+                        caches.delete(name);
+                    }
+                });
+                alert('キャッシュがクリアされました！');
+            } else {
+                alert('キャッシュAPIがサポートされていません。');
+            }
         });
     </script>
 
