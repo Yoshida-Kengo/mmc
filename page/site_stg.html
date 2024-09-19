@@ -243,7 +243,7 @@
                         mc_tracker('SET_ATTRIBUTES', {
                             [attributeKey] : inputValue
                         });
-                        alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+                        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
                 });
 
