@@ -274,7 +274,82 @@ for (let cookie of cookies) {
 return null;
 }
 </script>
+<div class="card-container"></div>
+    <script>
 
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
+        document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button1').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "download_materials",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、ログアウト、注文、注文キャンセル</h5>');
+        document.write('<button id="eventBtn" class="card-button2" value="multi2">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button2').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "logout",{});
+            mc_tracker('EVENT' , "order",{});
+            mc_tracker('EVENT' , "order_cancel",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、商品ページ閲覧、料金ページ閲覧、予約・申し込みページ閲覧、問い合わせページ閲覧、問い合わせフォーム送信、お気に入り追加、資料ダウンロード</h5>');
+        document.write('<button id="eventBtn" class="card-button2" value="multi3">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button3').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "browse_product",{});
+            mc_tracker('EVENT' , "browse_price",{});
+            mc_tracker('EVENT' , "browse_application",{});
+            mc_tracker('EVENT' , "browse_inquiry",{});
+            mc_tracker('EVENT' , "submit_inquiry",{});
+            mc_tracker('EVENT' , "add_favorite",{});
+            mc_tracker('EVENT' , "download_materials",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+    </script>
+</div>
 </body>
 
 </html>
