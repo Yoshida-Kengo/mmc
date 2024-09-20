@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="ディスクリプション">
+    <title>ページタイトル</title>
+    <!--ページCSSの読み込み-->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../home_style.css">
+
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.console.mico-cloud.jp/ev/access/6lI05aDZRjOd5Pd3xHDeRA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")</script>
+
+</head>
+<body>
+    <div>
+        <div class="content">
+            <h3>サイト：【QA】TenantSite1</h3>
+        </div>
+        <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
+        <button id="clearCacheBtn">キャッシュをクリア</button>
+
+        <div class="content">
+            <h3>
+                前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
+                説明：下記のボタンを押下することでWEBタグが発火します。</h3>
+        </div>
+        <!-- <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=Tuyoo3UfTnCGM8GphAV7rg&type=channel" class="btn">
+                基本流入経路：LINEで開く</a>
+        </div>  
+        <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=DBxmT-AgQoOhfmq_uI417A&type=channel" class="btn">
+                カスタム流入経路：LINEで開く</a>
+        </div>
+        <div class="content">
+            <a href="https://liff.line.me/2006155555-V5bZMNyo?st=mNtkeI8MQICLfXtvveh8Mg&lfm=9DhBX5QiSfy0Yop4RMmDqQ&type=channel" class="btn">
+                カスタム流入経路（複製）：LINEで開く</a>
+        </div> -->
+
+    </div>
+    <div class="card-container">
+        <script>
+            let eventParam = [{
+                eventValue : "login",
+                eventName : "ログイン"
+            },{
+                eventValue : "logout",
+                eventName : "ログアウト"
+            },{
+                eventValue : "subscribe",
+                eventName : "会員登録"
+            },{
+                eventValue : "unsubscribe",
+                eventName : "会員登録解除"
+            },{
+                eventValue : "add_cart",
+                eventName : "カート商品追加"
+            },{
+                eventValue : "remove_cart",
+                eventName : "カート商品削除"
+            },{
+                eventValue : "order",
+                eventName : "注文"
+            },{
+                eventValue : "order_cancel",
+                eventName   : "注文キャンセル"
+            },{
+                eventValue : "browse_lp",
+                eventName : "LP閲覧"
+            },{
+                eventValue : "browse_product",
+                eventName : "商品ページ閲覧"
+            },{
+                eventValue : "browse_price",
+                eventName : "料金ページ閲覧"
+            },{
+                eventValue  : "browse_store",
+                eventName : "店舗ページ閲覧"
+            },{
+                eventValue : "browse_application",
+                eventName   : "予約・申し込みページ閲覧"
+            },{
+                eventValue  : "input_application",
+                eventName : "予約・申し込みフォーム入力"
+            },{
+                eventValue : "confirm_application",
+                eventName : "予約・申し込みフォーム確認"
+            },{
+                eventValue : "submit_application",
+                eventName : "予約・申し込みフォーム送信"
+            },{
+                eventValue : "cancel_application",
+                eventName : "予約・申し込みキャンセル"
+            },{
+                eventValue : "browse_inquiry",
+                eventName : "問い合わせページ閲覧"
+            },{
+                eventValue : "input_inquiry",
+                eventName : "問い合わせフォーム入力"
+            },{
+                eventValue  : "confirm_inquiry",
+                eventName : "問い合わせフォーム確認"
+            },{
+                eventValue : "submit_inquiry",
+                eventName : "問い合わせフォーム送信"
+            },{
+                eventValue : "add_favorite",
+                eventName : "お気に入り追加"
+            },{
+                eventValue : "remove_favorite",
+                eventName : "お気に入り解除"
+            },{
+                eventValue : "site_search",
+                eventName : "サイト内検索"
+            },{
+                eventValue : "download_materials",
+                eventName : "資料ダウンロード"
+            }];
+
+            for(var i=0;i<eventParam.length;i++) {
+                document.write('<div class="card">');
+                document.write('<h5>イベント' + eventParam[i].eventName + '</h5>');
+                // document.write(eventParam[i].eventName);
+                document.write('<button id="eventBtn" class="card-button" value="' + eventParam[i].eventValue + '">ボタン</button>');
+                // document.write('<button id="eventBtn" value="' + eventParam[i].eventValue + '">' + eventparam[i].eventName + '</button>');
+                document.write('</div>');
+            }
+        </script>
+    </div>
+
+    <div class="content">
+        <h3>
+            前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
+            説明：下記の項目を入力後、押下することでカスタマー更新をします。</h3>
+    </div>
+    <form>
+        <script>
+            let attributeParam = [{
+                attributeKey : "name",
+                attributeName : "「文字列」の「名前」",
+            },{
+                attributeKey : "customer_no	",
+                attributeName : "「文字列」の「顧客番号」",
+            },{
+                attributeKey : "member_flag",
+                attributeName : "「フラグ」の「会員・入会フラグ」",
+            },{
+                attributeKey : "email",
+                attributeName : "「メールアドレス（文字列）」の「メールアドレス」",
+            },{
+                attributeKey : "phone",
+                attributeName : "「電話番号（文字列）」の「電話番号」",
+            }, {
+                attributeKey : "zip_code",
+                attributeName : "「郵便番号（文字列）」の「郵便番号」",
+            },{
+                attributeKey : "gender",
+                attributeName : "「タイプ」の「性別」",
+            }, {
+                attributeKey : "birthdate",
+                attributeName : "「日付」の「生年月日」",
+            }, {
+                attributeKey : "memo",
+                attributeName : "「テキスト」の「メモ」",
+            },{
+                attributeKey: "middle_name",
+                attributeName: "「文字列」の「ミドルネーム」"
+            },{
+                attributeKey: "age",
+                attributeName: "「数値」の「年齢」"
+            },{
+                attributeKey: "vacation",
+                attributeName: "「日付」の「休み」"
+            },{
+                attributeKey: "contract",
+                attributeName: "「日時」の「予約日時」"
+            },{
+                attributeKey: "hobby",
+                attributeName: "「タイプ」の「趣味」"
+            },{
+                attributeKey: "note",
+                attributeName: "「テキスト」の「記事」"
+            },{
+                attributeKey: "adult",
+                attributeName: "「フラグ」の「成人」"
+            },{
+                attributeKey: "favorite",
+                attributeName: "「複数選択」の「お気に入り」"
+            },{
+                attributeKey: "agreement",
+                attributeName: "「同意事項」の「同意事項」"
+            }
+            ];
+
+            for(var i=0;i<attributeParam.length;i++) {
+                document.write('<div class="input-container">');
+                document.write('<label for="inputField">型' + attributeParam[i].attributeName + 'の入力: </label>');
+                document.write('<textarea type="text" id="inputField' + (i+1) + '" ></textarea>');
+                document.write('<button class="submitButton" data-input="inputField' + (i+1) +'" data-attribute=' +attributeParam[i].attributeKey + ' >カスタマー更新する</button>');
+                document.write('</div>');
+            }
+        </script>
+    </form>
+    <p>取得した値: <span id="output"></span></p>
+
+
+    <script>
+        document.querySelectorAll('.card-button').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , button.value,{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+        function getCookies() {
+            const cookies = document.cookie;
+            const cookieArray = cookies.split(';');
+            console.log(cookieArray);
+
+            const cookieObject = {};
+            cookieArray.forEach(cookie => {
+            const [name, value] = cookie.split('=');
+            cookieObject[name] = value;
+        });
+        console.log(cookieObject);
+        }
+
+
+        document.querySelectorAll(".submitButton").forEach(button => {
+                    button.addEventListener("click", function(event) {
+                        event.preventDefault(); // フォームの送信を防ぐ
+                        var inputId = this.getAttribute("data-input");
+                        var attributeKey = this.getAttribute("data-attribute");
+                        var inputValue = document.getElementById(inputId).value; // 入力値を取得
+                        document.getElementById("output").textContent = inputValue; // 取得した値を表示
+                        mc_tracker('SET_ATTRIBUTES', {
+                            [attributeKey] : inputValue
+                        });
+                        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+                    });
+                });
+
+
+                document.getElementById('clearCacheBtn').addEventListener('click', function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) {
+                        caches.delete(name);
+                    }
+                });
+                alert('キャッシュがクリアされました！');
+            } else {
+                alert('キャッシュAPIがサポートされていません。');
+            }
+        });
+    </script>
+
+
+<script>
+    function getCookieValue(name) {
+let cookies = document.cookie.split(';');
+for (let cookie of cookies) {
+    let [key, value] = cookie.trim().split('=');
+    if (key === name) {
+        return decodeURIComponent(value);
+    }
+}
+return null;
+}
+</script>
+
+
+<div class="card-container">
+    <script>
+
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
+        document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button1').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "download_materials",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、ログアウト、注文、注文キャンセル</h5>');
+        document.write('<button id="eventBtn" class="card-button2" value="multi2">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button2').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "logout",{});
+            mc_tracker('EVENT' , "order",{});
+            mc_tracker('EVENT' , "order_cancel",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+
+        document.write('<div class="card">');
+        document.write('<h5>イベント：ログイン、商品ページ閲覧、料金ページ閲覧、予約・申し込みページ閲覧、問い合わせページ閲覧、問い合わせフォーム送信、お気に入り追加、資料ダウンロード</h5>');
+        document.write('<button id="eventBtn" class="card-button2" value="multi3">ボタン</button>');
+        document.write('</div>');
+
+
+        document.querySelectorAll('.card-button3').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , "login",{});
+            mc_tracker('EVENT' , "browse_product",{});
+            mc_tracker('EVENT' , "browse_price",{});
+            mc_tracker('EVENT' , "browse_application",{});
+            mc_tracker('EVENT' , "browse_inquiry",{});
+            mc_tracker('EVENT' , "submit_inquiry",{});
+            mc_tracker('EVENT' , "add_favorite",{});
+            mc_tracker('EVENT' , "download_materials",{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
+
+
+    </script>
+</div>
+
+    <script>
+
+
+    </script>
+
+
+</body>
+
+</html>
