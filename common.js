@@ -36,7 +36,7 @@ function cashClear() {
 }
 
 function getCookie() {
-    const formattedCookies = document.cookie.split('; ').join('\n');
+    const formattedCookies = document.cookie.split(';').join('\n');
 
 
     alert(formattedCookies);
