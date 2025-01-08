@@ -19,3 +19,23 @@
     margin-bottom: 20px;
   }
 
+  .back_button {
+      /* 1.形をきめる */
+      width: 250px;
+      height: 48px;
+      border-radius: 4px;
+      /* 2.背景色をきめる */
+      background: #857837;
+      /* 3.文字の配置をきめる */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* 4.文字のスタイルを設定 */
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: bold;
+      /* 5.クリックできることを示すためのカーソルポインターを設定 */
+      cursor: pointer;
+      margin: auto;
+      margin-bottom: 60px;
+  }

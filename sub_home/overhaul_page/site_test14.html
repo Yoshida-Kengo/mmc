@@ -7,19 +7,19 @@
     <meta name="description" content="ディスクリプション">
     <title>ページタイトル</title>
     <!--ページCSSの読み込み-->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../home_style.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../home_style.css">
 
-    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.stg.mcweb.micoworks-system.jp/ev/access/oMewo13KTtCaN39PPMkckA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
+    <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.overhaul.mcweb.micoworks-system.jp/ev/access/coxCW4ESR66u1BLhMX4vwA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
     </script>
 
 </head>
 <body>
     <div>
         <div class="content">
-            <h3>サイト：WEBタグ・イベントの動作チェック_STG</h3>
+            <h3>サイト：OverHaul動作テスト(14)</h3>
         </div>
-        <div class="button" onclick="location.href='../index.html'">一覧へ戻る</div>
+        <div class="button" onclick="location.href='../overhaul_home.html'">一覧へ戻る</div>
         <button id="clearCacheBtn">キャッシュをクリア</button>
 
         <div class="content">
@@ -129,6 +129,7 @@
                 document.write('</div>');
             }
         </script>
+
     </div>
 
     <div class="content">
@@ -141,9 +142,6 @@
             let attributeParam = [{
                 attributeKey : "name",
                 attributeName : "「文字列」の「名前」",
-            },{
-                attributeKey : "customer_no	",
-                attributeName : "「文字列」の「顧客番号」",
             },{
                 attributeKey : "member_flag",
                 attributeName : "「フラグ」の「会員・入会フラグ」",
@@ -245,7 +243,7 @@
                         mc_tracker('SET_ATTRIBUTES', {
                             [attributeKey] : inputValue
                         });
-                        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+                        alert('カスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
                     });
                 });
 
@@ -264,7 +262,6 @@
         });
     </script>
 
-
 <script>
     function getCookieValue(name) {
 let cookies = document.cookie.split(';');
@@ -277,91 +274,175 @@ for (let cookie of cookies) {
 return null;
 }
 </script>
+<div class="card-container"></div>
+<script>
+
+    document.write('<div class="card">');
+    document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
+    document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
+    document.write('</div>');
 
 
-<div class="card-container">
-    <script>
-
-        document.write('<div class="card">');
-        document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
-        document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
-        document.write('</div>');
-
-
-        document.querySelectorAll('.card-button1').forEach(button => {
-            button.addEventListener('click', eventIgnition);
-        // イベント発火
-        function eventIgnition() {
-            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
-            history.pushState(null, null, newUrl);
-            mc_tracker('EVENT' , "login",{});
-            mc_tracker('EVENT' , "download_materials",{});
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
-        }
-        });
-
-
-
-        document.write('<div class="card">');
-        document.write('<h5>イベント：ログイン、ログアウト、注文、注文キャンセル</h5>');
-        document.write('<button id="eventBtn" class="card-button2" value="multi2">ボタン</button>');
-        document.write('</div>');
-
-
-        document.querySelectorAll('.card-button2').forEach(button => {
-            button.addEventListener('click', eventIgnition);
-        // イベント発火
-        function eventIgnition() {
-            // getCookies();
-            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
-            history.pushState(null, null, newUrl);
-            // window.location.href = newUrl;
-            mc_tracker('EVENT' , "login",{});
-            mc_tracker('EVENT' , "logout",{});
-            mc_tracker('EVENT' , "order",{});
-            mc_tracker('EVENT' , "order_cancel",{});
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
-        }
-        });
+    document.querySelectorAll('.card-button1').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        mc_tracker('EVENT' , "login",{});
+        mc_tracker('EVENT' , "download_materials",{});
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
 
 
 
-        document.write('<div class="card">');
-        document.write('<h5>イベント：ログイン、商品ページ閲覧、料金ページ閲覧、予約・申し込みページ閲覧、問い合わせページ閲覧、問い合わせフォーム送信、お気に入り追加、資料ダウンロード</h5>');
-        document.write('<button id="eventBtn" class="card-button2" value="multi3">ボタン</button>');
-        document.write('</div>');
+    document.write('<div class="card">');
+    document.write('<h5>イベント：ログイン、ログアウト、注文、注文キャンセル</h5>');
+    document.write('<button id="eventBtn" class="card-button2" value="multi2">ボタン</button>');
+    document.write('</div>');
 
 
-        document.querySelectorAll('.card-button3').forEach(button => {
-            button.addEventListener('click', eventIgnition);
-        // イベント発火
-        function eventIgnition() {
-            // getCookies();
-            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
-            history.pushState(null, null, newUrl);
-            // window.location.href = newUrl;
-            mc_tracker('EVENT' , "login",{});
-            mc_tracker('EVENT' , "browse_product",{});
-            mc_tracker('EVENT' , "browse_price",{});
-            mc_tracker('EVENT' , "browse_application",{});
-            mc_tracker('EVENT' , "browse_inquiry",{});
-            mc_tracker('EVENT' , "submit_inquiry",{});
-            mc_tracker('EVENT' , "add_favorite",{});
-            mc_tracker('EVENT' , "download_materials",{});
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
-        }
-        });
+    document.querySelectorAll('.card-button2').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        // getCookies();
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        // window.location.href = newUrl;
+        mc_tracker('EVENT' , "login",{});
+        mc_tracker('EVENT' , "logout",{});
+        mc_tracker('EVENT' , "order",{});
+        mc_tracker('EVENT' , "order_cancel",{});
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
 
 
-    </script>
+
+    document.write('<div class="card">');
+    document.write('<h5>イベント：ログイン、商品ページ閲覧、料金ページ閲覧、予約・申し込みページ閲覧、問い合わせページ閲覧、問い合わせフォーム送信、お気に入り追加、資料ダウンロード</h5>');
+    document.write('<button id="eventBtn" class="card-button3" value="multi3">ボタン</button>');
+    document.write('</div>');
+
+
+    document.querySelectorAll('.card-button3').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        // getCookies();
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        // window.location.href = newUrl;
+        mc_tracker('EVENT' , "login",{});
+        mc_tracker('EVENT' , "browse_product",{});
+        mc_tracker('EVENT' , "browse_price",{});
+        mc_tracker('EVENT' , "browse_application",{});
+        mc_tracker('EVENT' , "browse_inquiry",{});
+        mc_tracker('EVENT' , "submit_inquiry",{});
+        mc_tracker('EVENT' , "add_favorite",{});
+        mc_tracker('EVENT' , "download_materials",{});
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
+
+
+    document.write('<div class="card">');
+    document.write('<h5>イベント：会員登録<br>カスタマー更新：カスタマー更新*7</h5>');
+    document.write('<button id="eventBtn" class="card-button4" value="multi4">ボタン</button>');
+    document.write('</div>');
+
+
+    document.querySelectorAll('.card-button4').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        // getCookies();
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        // window.location.href = newUrl;
+        mc_tracker('EVENT' , "subscribe",{});
+        mc_tracker('SET_ATTRIBUTES' , {"name" : "伊藤" });
+        mc_tracker('SET_ATTRIBUTES' , {"birthdate" : "1960/02/29" });
+        mc_tracker('SET_ATTRIBUTES' , {"email" : "a@ya.ru" });
+        mc_tracker('SET_ATTRIBUTES' , {"phone" : "0123456789" });
+        mc_tracker('SET_ATTRIBUTES' , {"middle_name" : "マイケル" });
+        mc_tracker('SET_ATTRIBUTES' , {"age" : "55" });
+        mc_tracker('SET_ATTRIBUTES' , {"contract" : "2024/09/12 16:20" });
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
+
+
+    document.write('<div class="card">');
+    document.write('<h5>イベント：会員登録<br>カスタマー更新：カスタマー更新*11</h5>');
+    document.write('<button id="eventBtn" class="card-button5" value="multi5">ボタン</button>');
+    document.write('</div>');
+
+
+    document.querySelectorAll('.card-button5').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        // getCookies();
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        // window.location.href = newUrl;
+        mc_tracker('EVENT' , "subscribe",{});
+        mc_tracker('SET_ATTRIBUTES' , {"name" : "佐藤" });
+        mc_tracker('SET_ATTRIBUTES' , {"birthdate" : "1961/02/28" });
+        mc_tracker('SET_ATTRIBUTES' , {"email" : "" });
+        mc_tracker('SET_ATTRIBUTES' , {"phone" : "1234567890" });
+        mc_tracker('SET_ATTRIBUTES' , {"zip_code" : "123-4567" });
+        mc_tracker('SET_ATTRIBUTES' , {"memo" : "" });
+        mc_tracker('SET_ATTRIBUTES' , {"middle_name" : "キャシー" });
+        mc_tracker('SET_ATTRIBUTES' , {"age" : "26" });
+        mc_tracker('SET_ATTRIBUTES' , {"contract" : "2024/02/29 0:01:00" });
+        mc_tracker('SET_ATTRIBUTES' , {"vacation" : "2024/10/25" });
+        mc_tracker('SET_ATTRIBUTES' , {"note" : "𠗖⑤𠈓🅱𠠺仼🌌w𡍄𠫓t🅾棈𠫓🆚🌄⑨𡽶𡉴k𠝏🌚④𡋤㌃🌝彌⑯y彌🈵㊦🆓🌗犾C褜D浬㍾㈹臀🇭蚕饅ⅨⅢ𢪸🇽🌫🇵㈱浬🅿🌗臀𢭆𡉻⑨≒∩🇾⊿𡍄V🌧⑭𡼞M𡚴🌉𡑮㊤∑🈸🆔𡴭秉杤T🌛秉🌇🈁🇺6H喀iu🇷🆘𪆐𡗗⑬𡈽ⅢN𦫿㌧𣇃⑩㌧U🈯🌫🌙🌖Ⅴ𠫓𠦝𡑮圭①㎡犾x𡈁𠂉🌦🇮🇵P𧃴藹⑩L軆㈲g3🆔⑩𠹭🌖🌜𢰤🌡𢡛🆎🇻🌙🈂②🌥🈵―d𢢫√Ⅶ∪𣇃𢭐十Bソ㎜🌑🌄🈁H𠦝𠹤㊧🇱🇳構🇨𨉷🆓N𢦏⑥㍽🇴𧚄𨉷🌓㎞T𥧄𠢹🌚🈺㍗⊿1媾𧃴🇽㎜㎝鋹𡢽🌋𡍄🌐u俉🌘G伀🇨④浬🇱🌝🇼𡍄Ⅸ禄𠽟0偆🈶🇿𢎭🇼𣇄∑⑨𠹭∮𢭆⑯🌨🇱Ⅷ🈷🌜🌄㎎≡𡵸㍍rX能𨉷予𢷡𡉻ⅥЫ𣝣∑≡棈𡼞🇿𡶒Ⅴ棈Ad" });
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
+
+
+    document.write('<div class="card">');
+    document.write('<h5>イベント：会員登録<br>カスタマー更新：カスタマー更新*16</h5>');
+    document.write('<button id="eventBtn" class="card-button6" value="multi6">ボタン</button>');
+    document.write('</div>');
+
+
+    document.querySelectorAll('.card-button6').forEach(button => {
+        button.addEventListener('click', eventIgnition);
+    // イベント発火
+    function eventIgnition() {
+        // getCookies();
+        const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+        history.pushState(null, null, newUrl);
+        // window.location.href = newUrl;
+        mc_tracker('EVENT' , "subscribe",{});
+        mc_tracker('SET_ATTRIBUTES' , {"customer_no" : "12345678901234567" });
+        mc_tracker('SET_ATTRIBUTES' , {"name" : "齊藤" });
+        mc_tracker('SET_ATTRIBUTES' , {"name_kana" : "サイトウ" });
+        mc_tracker('SET_ATTRIBUTES' , {"birthdate" : "2025/01/01" });
+        mc_tracker('SET_ATTRIBUTES' , {"email" : "s@ya.ru" });
+        mc_tracker('SET_ATTRIBUTES' , {"phone" : "2345678901" });
+        mc_tracker('SET_ATTRIBUTES' , {"zip_code" : "234-5678" });
+        mc_tracker('SET_ATTRIBUTES' , {"city" : "旭川市" });
+        mc_tracker('SET_ATTRIBUTES' , {"address" : "東旭川町倉沼" });
+        mc_tracker('SET_ATTRIBUTES' , {"registration_date" : "2022/01/01" });
+        mc_tracker('SET_ATTRIBUTES' , {"memo" : "⑩𠹭🌖🌜𢰤🌡𢡛🆎🇻🌙🈂②🌥🈵―d𢢫√Ⅶ∪𣇃𢭐十Bソ㎜🌑🌄🈁H𠦝𠹤㊧🇱🇳構🇨𨉷🆓N𢦏⑥㍽🇴𧚄𨉷🌓㎞T𥧄𠢹🌚🈺㍗⊿1媾𧃴🇽㎜㎝鋹𡢽🌋𡍄🌐u俉🌘G伀🇨④浬🇱🌝🇼𡍄Ⅸ禄𠽟0偆🈶🇿𢎭🇼𣇄∑⑨𠹭∮𢭆⑯🌨🇱Ⅷ🈷🌜🌄㎎≡𡵸㍍rX能𨉷予𢷡𡉻ⅥЫ𣝣∑≡棈𡼞🇿𡶒Ⅴ棈Ad" });
+        mc_tracker('SET_ATTRIBUTES' , {"middle_name" : "ソ" });
+        mc_tracker('SET_ATTRIBUTES' , {"age" : "15" });
+        mc_tracker('SET_ATTRIBUTES' , {"vacation" : "2024/10/25" });
+        mc_tracker('SET_ATTRIBUTES' , {"contract" : "2024/09/12 16:20:00" });
+        mc_tracker('SET_ATTRIBUTES' , {"note" : "𠗖⑤𠈓🅱𠠺仼🌌w𡍄𠫓t🅾棈𠫓🆚🌄⑨𡽶𡉴k𠝏🌚④𡋤㌃🌝彌⑯y彌🈵㊦🆓🌗犾C褜D浬㍾㈹臀🇭蚕饅ⅨⅢ𢪸🇽🌫🇵㈱浬🅿🌗臀𢭆𡉻⑨≒∩🇾⊿𡍄V🌧⑭𡼞M𡚴🌉𡑮㊤∑🈸🆔𡴭秉杤T🌛秉🌇🈁🇺6H喀iu🇷🆘𪆐𡗗⑬𡈽ⅢN𦫿㌧𣇃⑩㌧U🈯🌫🌙🌖Ⅴ𠫓𠦝𡑮圭①㎡犾x𡈁𠂉🌦🇮🇵P𧃴藹⑩L軆㈲g3🆔⑩𠹭🌖🌜𢰤🌡𢡛🆎🇻🌙🈂②🌥🈵―d𢢫√Ⅶ∪𣇃𢭐十Bソ㎜🌑🌄🈁H𠦝𠹤㊧🇱🇳構🇨𨉷🆓N𢦏⑥㍽🇴𧚄𨉷🌓㎞T𥧄𠢹🌚🈺㍗⊿1媾𧃴🇽㎜㎝鋹𡢽🌋𡍄🌐u俉🌘G伀🇨④浬🇱🌝🇼𡍄Ⅸ禄𠽟0偆🈶🇿𢎭🇼𣇄∑⑨𠹭∮𢭆⑯🌨🇱Ⅷ🈷🌜🌄㎎≡𡵸㍍rX能𨉷予𢷡𡉻ⅥЫ𣝣∑≡棈𡼞🇿𡶒Ⅴ棈Ad" });
+        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
+
+</script>
 </div>
-
-    <script>
-
-
-    </script>
-
-
 </body>
 
 </html>
