@@ -286,7 +286,6 @@ return null;
 
 <div class="card-container">
     <script>
-
         document.write('<div class="card">');
         document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
         document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
@@ -301,7 +300,8 @@ return null;
             history.pushState(null, null, newUrl);
             mc_tracker('EVENT' , "login",{});
             mc_tracker('EVENT' , "download_materials",{});
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+            // alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+            alert('mc_customerid「' + getCookieValue('mc_customerid') + '」またはmc_token「' + getCookieValue('mc_token') + '」がイベント「' + button.value + '」を送信しました');
         }
         });
 
@@ -360,12 +360,6 @@ return null;
 
     </script>
 </div>
-
-    <script>
-
-
-    </script>
-
 
 </body>
 
