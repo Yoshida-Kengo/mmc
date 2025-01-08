@@ -16,9 +16,14 @@ function clearLocalStorage() {
 }
     
 
-function deleteCookies(deleteList) {
-    deleteList.forEach(function(name) {
-        document.cookie = 'name= ' + name + '; max-age=0;';
+function deleteCookies(cookieList) {
+    const pathList = ['/', '/mmc.github.io/sub_home/stg_page','/mmc.github.io/sub_home/prod_page'];
+    
+
+    cookieList.forEach(function(name) {
+        pathList.forEach(function(path){
+            document.cookie = name + '=; max-age=0;path=' + path + ';';
+        })
     });
 }
 
@@ -29,13 +34,6 @@ function cashClear() {
     deleteCookies(["mc_token", "mc_customerid"]);
     // deleteCookieEverywhere('myCookie');
     alert('キャッシュがクリアされました！');
-}
-
-function addCookie() {
-    var expire = new Date();
-    expire.setTime( expire.getTime() + 1000 * 60 );
-
-    document.cookie = 'data=123;expires=' + expire.toUTCString();
 }
 
 function getCookie() {
