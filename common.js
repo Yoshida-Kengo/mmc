@@ -32,10 +32,12 @@ function cashClear() {
     clearCookies();
     clearLocalStorage();
     deleteCookies(["mc_token", "mc_customerid"]);
-    // deleteCookieEverywhere('myCookie');
     alert('キャッシュがクリアされました！');
 }
 
 function getCookie() {
-    alert(document.cookie);
+    const formattedCookies = document.cookie.split('; ').join('\n');
+
+
+    alert(formattedCookies);
 }
