@@ -30,3 +30,14 @@ function cashClear() {
     // deleteCookieEverywhere('myCookie');
     alert('キャッシュがクリアされました！');
 }
+
+function addCookie() {
+    var expire = new Date();
+    expire.setTime( expire.getTime() + 1000 * 60 );
+
+    document.cookie = 'data=123;expires=' + expire.toUTCString();
+}
+
+function getCookie() {
+    alert(document.cookie);
+}
