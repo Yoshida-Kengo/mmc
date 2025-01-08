@@ -38,6 +38,16 @@ function cashClear() {
 function getCookie() {
     const formattedCookies = document.cookie.split('; ').join('\n');
 
-
     alert(formattedCookies);
+}
+
+function getCookieValue(name) {
+    let cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        let [key, value] = cookie.trim().split('=');
+        if (key === name) {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
 }

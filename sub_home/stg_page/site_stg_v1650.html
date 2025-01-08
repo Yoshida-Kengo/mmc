@@ -217,7 +217,6 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
-            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
@@ -225,19 +224,6 @@
             alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
         }
         });
-
-        function getCookies() {
-            const cookies = document.cookie;
-            const cookieArray = cookies.split(';');
-            console.log(cookieArray);
-
-            const cookieObject = {};
-            cookieArray.forEach(cookie => {
-            const [name, value] = cookie.split('=');
-            cookieObject[name] = value;
-        });
-        console.log(cookieObject);
-        }
 
 
         document.querySelectorAll(".submitButton").forEach(button => {
@@ -268,20 +254,6 @@
             }
         });
     </script>
-
-
-<script>
-    function getCookieValue(name) {
-let cookies = document.cookie.split(';');
-for (let cookie of cookies) {
-    let [key, value] = cookie.trim().split('=');
-    if (key === name) {
-        return decodeURIComponent(value);
-    }
-}
-return null;
-}
-</script>
 
 
 <div class="card-container">
@@ -317,7 +289,6 @@ return null;
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
-            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
@@ -341,7 +312,6 @@ return null;
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
-            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
