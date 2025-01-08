@@ -51,3 +51,34 @@ function getCookieValue(name) {
     }
     return null;
 }
+
+function setCardButtonOnClickListener(event) {
+    document.querySelectorAll(event).forEach(button => {
+        button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , button.value,{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+    }
+    });
+}
+
+function setSubmitButtonOnClickListener(event) {
+    document.querySelectorAll(event).forEach(button => {
+        button.addEventListener("click", function(event) {
+            event.preventDefault(); // フォームの送信を防ぐ
+            var inputId = this.getAttribute("data-input");
+            var attributeKey = this.getAttribute("data-attribute");
+            var inputValue = document.getElementById(inputId).value; // 入力値を取得
+            document.getElementById("output").textContent = inputValue; // 取得した値を表示
+            mc_tracker('SET_ATTRIBUTES', {
+                [attributeKey] : inputValue
+            });
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+        });
+    });
+
+}
