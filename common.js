@@ -37,8 +37,11 @@ function cashClear() {
 
 function getCookie() {
     const formattedCookies = document.cookie.split('; ').join('\n');
-
-    alert(formattedCookies);
+    if(formattedCookies == null || formattedCookies == '') {
+        alert("クッキーは存在しません。");
+    } else {
+        alert(formattedCookies);
+    }
 }
 
 function getCookieValue(name) {
