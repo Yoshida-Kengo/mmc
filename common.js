@@ -64,7 +64,8 @@ function setCardButtonOnClickListener(event) {
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
             mc_tracker('EVENT' , button.value,{});
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+            // alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」\nmc_token「' + getCookieValue('mc_token') + '」\nがイベント「' + button.value + '」を送信しました');
     }
     });
 }
@@ -80,8 +81,8 @@ function setSubmitButtonOnClickListener(event) {
             mc_tracker('SET_ATTRIBUTES', {
                 [attributeKey] : inputValue
             });
-            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」\nmc_token「' + getCookieValue('mc_token') + '」\nのカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
         });
     });
-
 }
+
