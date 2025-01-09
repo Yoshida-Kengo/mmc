@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
-
-    <!-- <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.stg.mcweb.micoworks-system.jp/ev/access/oMewo13KTtCaN39PPMkckA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")
-    </script> -->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
@@ -16,7 +11,6 @@
     <link rel="stylesheet" href="../../home_style.css">
 
     <script>!(function(e,c,t){e.mc_queue=[],e.mc_tracker=function(){e.mc_queue.push(arguments)},(y=c.createElement(t)).type="text/javascript",y.src="https://event.console.mico-cloud.jp/ev/access/6lI05aDZRjOd5Pd3xHDeRA/micocloud.js",y.async=1,(b=c.getElementsByTagName(t)[0]).parentNode.insertBefore(y,b)})(window,document,"script")</script>
-    <script src="../../common.js"></script>
 
 </head>
 <body>
@@ -24,9 +18,9 @@
         <div class="content">
             <h3>サイト：【QA】TenantSite1</h3>
         </div>
-        <div class="button" onclick="location.href='../stg_home.html'">一覧へ戻る</div>
-        <button onclick="cashClear()">キャッシュをクリア</button>
-        <button onclick="getCookie()">クッキーを表示</button>
+        <div class="button" onclick="location.href='../prod_home.html'">一覧へ戻る</div>
+        <button id="clearCacheBtn">キャッシュをクリア</button>
+
         <div class="content">
             <h3>
                 前提：MMCカスタマーIDまたはあとリビューショントークンが権限ONになっていること<br>
@@ -213,16 +207,80 @@
 
 
     <script>
-        setCardButtonOnClickListener('.card-button');
+        document.querySelectorAll('.card-button').forEach(button => {
+            button.addEventListener('click', eventIgnition);
+        // イベント発火
+        function eventIgnition() {
+            // getCookies();
+            const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
+            history.pushState(null, null, newUrl);
+            // window.location.href = newUrl;
+            mc_tracker('EVENT' , button.value,{});
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
+        }
+        });
 
-        setSubmitButtonOnClickListener('.submitButton');
+        function getCookies() {
+            const cookies = document.cookie;
+            const cookieArray = cookies.split(';');
+            console.log(cookieArray);
+
+            const cookieObject = {};
+            cookieArray.forEach(cookie => {
+            const [name, value] = cookie.split('=');
+            cookieObject[name] = value;
+        });
+        console.log(cookieObject);
+        }
 
 
+        document.querySelectorAll(".submitButton").forEach(button => {
+                    button.addEventListener("click", function(event) {
+                        event.preventDefault(); // フォームの送信を防ぐ
+                        var inputId = this.getAttribute("data-input");
+                        var attributeKey = this.getAttribute("data-attribute");
+                        var inputValue = document.getElementById(inputId).value; // 入力値を取得
+                        document.getElementById("output").textContent = inputValue; // 取得した値を表示
+                        mc_tracker('SET_ATTRIBUTES', {
+                            [attributeKey] : inputValue
+                        });
+                        alert('カスタマーID「' + getCookieValue('mc_customerid') + '」のカスタマー属性「' + attributeKey + '」に「' + inputValue + '」を設定しました');
+                    });
+                });
+
+
+                document.getElementById('clearCacheBtn').addEventListener('click', function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) {
+                        caches.delete(name);
+                    }
+                });
+                alert('キャッシュがクリアされました！');
+            } else {
+                alert('キャッシュAPIがサポートされていません。');
+            }
+        });
     </script>
+
+
+<script>
+    function getCookieValue(name) {
+let cookies = document.cookie.split(';');
+for (let cookie of cookies) {
+    let [key, value] = cookie.trim().split('=');
+    if (key === name) {
+        return decodeURIComponent(value);
+    }
+}
+return null;
+}
+</script>
 
 
 <div class="card-container">
     <script>
+
         document.write('<div class="card">');
         document.write('<h5>イベント：ログイン、資料ダウンロード</h5>');
         document.write('<button id="eventBtn" class="card-button1" value="multi1">ボタン</button>');
@@ -237,8 +295,7 @@
             history.pushState(null, null, newUrl);
             mc_tracker('EVENT' , "login",{});
             mc_tracker('EVENT' , "download_materials",{});
-            // alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
-            alert('mc_customerid「' + getCookieValue('mc_customerid') + '」またはmc_token「' + getCookieValue('mc_token') + '」がイベント「' + button.value + '」を送信しました');
+            alert('カスタマーID「' + getCookieValue('mc_customerid') + '」がイベント「' + button.value + '」を送信しました');
         }
         });
 
@@ -254,6 +311,7 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
+            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
@@ -277,6 +335,7 @@
             button.addEventListener('click', eventIgnition);
         // イベント発火
         function eventIgnition() {
+            // getCookies();
             const newUrl = window.location.origin + window.location.pathname + "?" + button.value;
             history.pushState(null, null, newUrl);
             // window.location.href = newUrl;
@@ -295,6 +354,12 @@
 
     </script>
 </div>
+
+    <script>
+
+
+    </script>
+
 
 </body>
 
